@@ -1,0 +1,18 @@
+{% if template == 'index' %}
+  <!-- A single banner image on home page {% increment banner_done %} -->
+  {% if banner_done > 1 %}{% break %}{% endif %}
+{% endif %}
+
+{% assign has_banner_image = true %}
+
+<div class="grid banner-wrapper">
+  <div class="grid__item banner slide-up-animation animated">
+    {% unless settings.banner_url == blank %}
+      <a href="{{ settings.banner_url }}">
+    {% endunless %}
+        <img class="banner__image" src="{{ 'banner.jpg' | asset_img_url: '2048x2048' }}" alt="{{ settings.banner_alt | escape }}">
+    {% unless settings.banner_url == blank %}
+      </a>
+    {% endunless %}
+  </div>
+</div>

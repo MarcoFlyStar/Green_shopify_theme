@@ -1,0 +1,11 @@
+{% if template == 'index' %}
+  <!-- A single featured content module on home page {% increment featured_content_done %} -->
+  {% if featured_content_done > 1 %}{% break %}{% endif %}
+{% endif %}
+
+{% unless settings.home_page_content == blank or pages[settings.home_page_content].empty? %}
+  {% assign has_home_page_content = true %}
+  <div class="rte">
+    {{ pages[settings.home_page_content].content }}
+  </div>
+{% endunless %}
